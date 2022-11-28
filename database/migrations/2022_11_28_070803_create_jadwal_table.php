@@ -15,6 +15,9 @@ return new class extends Migration
     {
         Schema::create('jadwal', function (Blueprint $table) {
             $table->id();
+            $table->string('hari', 10);
+            $table->time('jadwalBuka', $precision = 0);
+            $table->time('jadwalTutup', $precision = 0);
             $table->timestamps();
         });
     }
