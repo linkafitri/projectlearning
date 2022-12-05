@@ -13,58 +13,49 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">update User</h4>
+			  <h4 class="box-title">update Produk</h4>
 			  
 			</div>
 			<!-- /.box-header -->
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{route('users.update', $editData->id)}}">
+					<form method="post" action="{{route('produks.update', $editData->id)}}">
                     @csrf
-						<div class="row">
-							<div class="col-md-6">
-                            <div class="form-group">
-								<h5>Grup User <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<select name="selectUser" id="selectUser" required class="form-control">
-										<option value="">Pilih Grup User</option>
-										<option value="admin" {{($editData->usertype=="admin"? "selected":"")}}>admin</option>
-										<option value="user" {{($editData->usertype=="user"? "selected":"")}}>user</option>
-
-									</select>
-								</div>
-							</div>
-                        <!-- end basic select -->
-							</div>
-                            <!-- end colmd6 -->
-							<div class="col-md-6">
-                            <div class="form-group">
-								<h5>Nama <span class="text-danger">*</span></h5>
-								<div class="controls">
-									<input type="text" name="textNama" value="{{$editData->name}}" class="form-control" required data-validation-required-message="This field is required"> </div>
-								<div class="form-control-feedback"><small>Add <code>required</code> attribute to field for required validation.</small></div>
-							</div>
-						</div>
-                        <!-- END row select -->
-                        </div>
-
                         <div class="row">
                             <div class="col-md-6">
                             <div class="form-group">
-								<h5>Email <span class="text-danger">*</span></h5>
+								<h5>Nama Produk <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="email" name="email" value="{{$editData->email}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="text" name="namaproduk" value="{{$editData->namaproduk}}" class="form-control" required data-validation-required-message="This field is required"> </div>
 							</div>
                             </div>
                             
-                            <!-- <div class="col-md-6">
+                            <div class="col-md-6">
                             <div class="form-group">
-								<h5>Password <span class="text-danger">*</span></h5>
+								<h5>Harga Produk <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="password" name="password" class="form-control" required data-validation-required-message="This field is required"> </div>
-							</div> -->
-                        </div>
+									<input type="text" name="hargaproduk" value="{{$editData->hargaproduk}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+							</div>
+                            </div>
+
+						<div class="col-md-6">
+                            <div class="form-group">
+								<h5>Deskripsi Produk <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="text" name="desk" value="{{$editData->desk}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+							</div>
+                            </div>
+
+						<div class="row">
+                            <div class="col-md-6">
+                            <div class="form-group">
+								<h5>Foto <span class="text-danger">*</span></h5>
+								<div class="controls">
+									<input type="file" name="fotoproduk" value="{{$editData->fotoproduk}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+							</div>
+                            </div>
+                            
                             </div>
                         </div>
                         <!-- end row -->

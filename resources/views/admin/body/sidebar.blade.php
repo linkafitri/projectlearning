@@ -40,6 +40,20 @@
 		  
         <li class="treeview">
           <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Kelola Produk</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('produk.view')}}"><i class="ti-more"></i>Tampilkan Produk</a></li>
+            <li><a href="{{route('produk.add')}}"><i class="ti-more"></i>Tambah Produk</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
             <i data-feather="mail"></i> <span>Mailbox</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>

@@ -3,8 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\Backend\MhsController;
-use App\Http\Controllers\Backend\LaguController;
+use App\Http\Controllers\ProdukController;
 
 /*
 |--------------------------------------------------------------------------
@@ -48,9 +47,9 @@ Route::get('/admin/logout',[AdminController::class, 'logout'])->name('admin.logo
 route::prefix('produk')->group(function(){
     Route::get('/view',[ProdukController::class, 'ProdukView'])->name('produk.view');
     Route::get('/add',[ProdukController::class, 'ProdukAdd'])->name('produk.add');
-    Route::post('/store',[ProdukController::class, 'ProdukStore'])->name('produk.store');
-    Route::get('/edit/{id}',[ProdukController::class, 'ProdukEdit'])->name('produk.edit');
-    Route::post('/update/{id}',[ProdukController::class, 'ProdukUpdate'])->name('produk.update');
-    Route::get('/delete/{id}',[ProdukController::class, 'ProdukDelete'])->name('produk.delete');
+    Route::post('/store',[ProdukController::class, 'ProdukStore'])->name('produks.store');
+    Route::get('/edit/{id}',[ProdukController::class, 'ProdukEdit'])->name('produks.edit');
+    Route::post('/update/{id}',[ProdukController::class, 'ProdukUpdate'])->name('produks.update');
+    Route::get('/delete/{id}',[ProdukController::class, 'ProdukDelete'])->name('produks.delete');
 });
 
