@@ -23,7 +23,7 @@ class ProdukController extends Controller
         $data=new Produk();
         $data->namaproduk=$request->namaproduk;
         $data->hargaproduk=$request->hargaproduk;
-        $data->deskripsiproduk=$request->deskripsiproduk;
+        $data->desk=$request->desk;
         $data->fotoproduk=$request->fotoproduk;
         $data->save();
 
@@ -39,10 +39,10 @@ class ProdukController extends Controller
 
     public function ProdukUpdate(Request $request, $id) {
        
-        $data=new Produk();
+        $data=Produk::find($id);
         $data->namaproduk=$request->namaproduk;
         $data->hargaproduk=$request->hargaproduk;
-        $data->deskripsiproduk=$request->deskripsiproduk;
+        $data->desk=$request->desk;
         $data->fotoproduk=$request->fotoproduk;
         
         $data->save();
