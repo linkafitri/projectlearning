@@ -54,6 +54,20 @@
 
         <li class="treeview">
           <a href="#">
+            <i data-feather="message-circle"></i>
+            <span>Kelola Paket</span>
+            <span class="pull-right-container">
+              <i class="fa fa-angle-right pull-right"></i>
+            </span>
+          </a>
+          <ul class="treeview-menu">
+            <li><a href="{{route('paket.view')}}"><i class="ti-more"></i>Tampilkan Paket</a></li>
+            <li><a href="{{route('paket.add')}}"><i class="ti-more"></i>Tambah Paket</a></li>
+          </ul>
+        </li>
+
+        <li class="treeview">
+          <a href="#">
             <i data-feather="mail"></i> <span>Mailbox</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>

@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
+use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
 
 /*
@@ -51,5 +52,16 @@ route::prefix('produk')->group(function(){
     Route::get('/edit/{id}',[ProdukController::class, 'ProdukEdit'])->name('produks.edit');
     Route::post('/update/{id}',[ProdukController::class, 'ProdukUpdate'])->name('produks.update');
     Route::get('/delete/{id}',[ProdukController::class, 'ProdukDelete'])->name('produks.delete');
+});
+
+Route::get('/admin/logout',[AdminController::class, 'logout'])->name('admin.logout');
+
+route::prefix('paket')->group(function(){
+    Route::get('/view',[PaketController::class, 'PaketView'])->name('paket.view');
+    Route::get('/add',[PaketController::class, 'PaketAdd'])->name('paket.add');
+    Route::post('/store',[PaketController::class, 'PaketStore'])->name('paket.store');
+    Route::get('/edit/{id}',[PaketController::class, 'PaketEdit'])->name('paket.edit');
+    Route::post('/update/{id}',[PaketControllerr::class, 'PaketUpdate'])->name('paket.update');
+    Route::get('/delete/{id}',[PaketController::class, 'PaketDelete'])->name('paket.delete');
 });
 
