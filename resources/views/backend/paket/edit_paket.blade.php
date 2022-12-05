@@ -20,7 +20,7 @@
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{route('paket.update', $editData->id)}}">
+					<form method="post" action="{{route('pakets.update', $editData->id)}}">
                     @csrf
                         <div class="row">
                             <div class="col-md-6">
