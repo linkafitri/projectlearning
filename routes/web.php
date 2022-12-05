@@ -59,9 +59,9 @@ Route::get('/admin/logout',[AdminController::class, 'logout'])->name('admin.logo
 route::prefix('paket')->group(function(){
     Route::get('/view',[PaketController::class, 'PaketView'])->name('paket.view');
     Route::get('/add',[PaketController::class, 'PaketAdd'])->name('paket.add');
-    Route::post('/store',[PaketController::class, 'PaketStore'])->name('paket.store');
-    Route::get('/edit/{id}',[PaketController::class, 'PaketEdit'])->name('paket.edit');
-    Route::post('/update/{id}',[PaketControllerr::class, 'PaketUpdate'])->name('paket.update');
-    Route::get('/delete/{id}',[PaketController::class, 'PaketDelete'])->name('paket.delete');
+    Route::post('/store',[PaketController::class, 'PaketStore'])->name('pakets.store');
+    Route::get('/edit/{id}',[PaketController::class, 'PaketEdit'])->name('pakets.edit');
+    Route::post('/update/{id}',[PaketControllerr::class, 'PaketUpdate'])->name('pakets.update');
+    Route::get('/delete/{id}',[PaketController::class, 'PaketDelete'])->name('pakets.delete');
 });
 
