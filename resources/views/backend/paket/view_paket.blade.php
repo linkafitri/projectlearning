@@ -37,7 +37,7 @@
 							@foreach($allDataPaket as $key => $paket)
 							<tr>
 								<td>{{$paket->namapaket}}</td>
-								<td>{{$paket->deksripsi}}</td>
+								<td>{{$paket->deskripsi}}</td>
 								<td>{{$paket->hargapaket}}</td>
 								<td>{{$paket->foto}}</td>
 								<td>
