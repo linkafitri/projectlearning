@@ -3,8 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Backend\UserController;
-use App\Http\Controllers\PaketController;
 use App\Http\Controllers\ProdukController;
+use App\Http\Controllers\PaketController;
 
 /*
 |--------------------------------------------------------------------------
