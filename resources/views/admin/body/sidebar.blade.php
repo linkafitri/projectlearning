@@ -40,7 +40,7 @@
 		  
         <li class="treeview">
           <a href="#">
-            <i data-feather="message-circle"></i>
+            <i data-feather="tag"></i>
             <span>Kelola Produk</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
@@ -54,7 +54,7 @@
 
         <li class="treeview">
           <a href="#">
-            <i data-feather="message-circle"></i>
+            <i data-feather="archive"></i>
             <span>Kelola Paket</span>
             <span class="pull-right-container">
               <i class="fa fa-angle-right pull-right"></i>
