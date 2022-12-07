@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>SB Admin 2 - Login</title>
+    <title>Dapoer Umma Admin Login</title>
 
     <!-- Custom fonts for this template-->
     <link href="{{asset('backend/css/all.min.css')}}" rel="stylesheet" type="text/css">
