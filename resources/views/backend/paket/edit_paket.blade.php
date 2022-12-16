@@ -13,7 +13,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">update Paket</h4>
+			  <h4 class="box-title">Update Paket</h4>
 			  
 			</div>
 			<!-- /.box-header -->
@@ -35,7 +35,7 @@
                             <div class="form-group">
 								<h5>Deskripsi <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="text" name="deskripsi" value="{{$editData->hargapaket}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="text" name="deskripsi" value="{{$editData->deskripsi}}" class="form-control" required data-validation-required-message="This field is required"> </div>
 							</div>
                             </div>
 

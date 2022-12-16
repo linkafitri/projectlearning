@@ -13,7 +13,7 @@
 		 <!-- Basic Forms -->
 		  <div class="box">
 			<div class="box-header with-border">
-			  <h4 class="box-title">update Produk</h4>
+			  <h4 class="box-title">Update Produk</h4>
 			  
 			</div>
 			<!-- /.box-header -->

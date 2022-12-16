@@ -98,10 +98,10 @@
   <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
   <script type="text/javascript">
-    $(function() {
-      $(document).on('click', '#delete', function(e) {
+    $(function(){
+      $(document).on('click', '#delete', function(e){
         e.preventDefault();
-        var link = $(this).attr("href");
+        var link=$(this).attr("href");
 
         const swalWithBootstrapButtons = Swal.mixin({
           customClass: {
@@ -112,18 +112,19 @@
         })
 
         swalWithBootstrapButtons.fire({
-          title: 'Are you sure?',
-          text: "You won't be able to revert this!",
+          title: 'Anda yakin?',
+          text: "Data terhapus tidak dapat dikembalikan!",
           icon: 'warning',
           showCancelButton: true,
-          confirmButtonText: 'Yes, delete it!',
-          cancelButtonText: 'No, cancel!',
+          confirmButtonText: 'Ya, hapus saja!',
+          cancelButtonText: 'Tidak, Batal!',
           reverseButtons: true
         }).then((result) => {
           if (result.isConfirmed) {
+            window.location.href=link
             swalWithBootstrapButtons.fire(
-              'Deleted!',
-              'Your file has been deleted.',
+              'Terhapus!',
+              'Data user sudah dihapus.',
               'success'
             )
           } else if (
@@ -131,49 +132,15 @@
             result.dismiss === Swal.DismissReason.cancel
           ) {
             swalWithBootstrapButtons.fire(
-              'Cancelled',
-              'Your imaginary file is safe :)',
+              'Dibatalkan',
+              'Data user belum terhapus :)',
               'error'
             )
           }
         })
-        // const swalWithBootstrapButtons = Swal.mixin({
-        //   customClass: {
-        //     confirmButton: 'btn btn-success',
-        //     cancelButton: 'btn btn-danger'
-        //   },
-        //   buttonsStyling: false
-        // })
-
-        // swalWithBootstrapButtons.fire({
-        //   title: 'Anda yakin?',
-        //   text: "Data terhapus tidak dapat dikembalikan!",
-        //   icon: 'warning',
-        //   showCancelButton: true,
-        //   confirmButtonText: 'Ya, hapus saja!',
-        //   cancelButtonText: 'Tidak, Batal!',
-        //   reverseButtons: true
-        // }).then((result) => {
-        //   if (result.isConfirmed) {
-        //     window.location.href=link
-        //     swalWithBootstrapButtons.fire(
-        //       'Terhapus!',
-        //       'Data user sudah dihapus.',
-        //       'success'
-        //     )
-        //   } else if (
-        //     /* Read more about handling dismissals below */
-        //     result.dismiss === Swal.DismissReason.cancel
-        //   ) {
-        //     swalWithBootstrapButtons.fire(
-        //       'Dibatalkan',
-        //       'Data user belum terhapus :)',
-        //       'error'
-        //     )
-        //   }
-        // })
       });
     });
+
   </script>
 
 
