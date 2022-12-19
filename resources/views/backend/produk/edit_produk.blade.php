@@ -35,7 +35,7 @@
                             <div class="form-group">
 								<h5>Harga Produk <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="text" name="hargaproduk" value="{{$editData->hargaproduk}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="number" name="hargaproduk" value="{{$editData->hargaproduk}}" class="form-control" required data-validation-required-message="This field is required"> </div>
 							</div>
                             </div>
 
