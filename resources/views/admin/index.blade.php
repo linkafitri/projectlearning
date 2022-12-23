@@ -1,11 +1,11 @@
   @extends('admin.admin_master')
   @section('admin')
   <!-- Content Wrapper. Contains page content -->
-  <!-- <div class="content-wrapper">
-	  <div class="container-full"> -->
+  <div class="content-wrapper">
+	  <div class="container-full">
 
 		<!-- Main content -->
-		<!-- <section class="content">
+		<section class="content">
 			<div class="row">
 				<div class="col-xl-2 col-6">
 					<div class="box overflow-hidden pull-up hov-rs">
@@ -502,9 +502,9 @@
 					</div>  
 				</div>
 			</div>
-		</section> -->
+		</section>
 		<!-- /.content -->
-	  <!-- </div>
-  </div> -->
+	   </div>
+  </div>
   <!-- /.content-wrapper -->
   @endsection
