@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Produk;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
+// use Iluminate\Support\Facades\File;
 
 class ProdukController extends Controller
 {
@@ -80,11 +82,20 @@ class ProdukController extends Controller
         //     'textNama' =>'required'
         // ]);
         //dd($request);
+
         $data=new Produk();
         $data->namaproduk=$request->namaproduk;
         $data->hargaproduk=$request->hargaproduk;
         $data->desk=$request->desk;
-        $data->fotoproduk=$request->fotoproduk;
+        if($request->hasfile('fotoproduk'))
+        {
+            $file = $request->file('fotoproduk');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/produks', $filename);
+            $data->fotoproduk=$request->fotoproduk = $filename;
+        }
+        // $data->fotoproduk=$request->fotoproduk;
         $data->save();
 
         return redirect()->route('produk.view')->with('info','Tambah Produk berhasil');
@@ -107,12 +118,22 @@ class ProdukController extends Controller
         $data->namaproduk=$request->namaproduk;
         $data->hargaproduk=$request->hargaproduk;
         $data->desk=$request->desk;
-        $data->fotoproduk=$request->fotoproduk;
-        // if($request->password!=""){
-        //     $data->password=bcrypt($request->password);
-        // }
+        if($request->hasfile('fotoproduk'))
+        {
+            $destination = 'uploads/produks'.$data->fotoproduk=$request->fotoproduk;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('fotoproduk');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('uploads/produks', $filename);
+            $data->fotoproduk=$request->fotoproduk = $filename;
+        }
+        // $data->fotoproduk=$request->fotoproduk;
         
-        $data->save();
+        $data->update();
 
         return redirect()->route('produk.view')->with('info','Update Produk berhasil');
     }

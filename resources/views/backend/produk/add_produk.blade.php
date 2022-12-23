@@ -20,7 +20,7 @@
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{route('produks.store')}}">
+					<form method="post" action="{{route('produks.store')}}" enctype="multipart/form-data">
                     @csrf
 					<div class="row">
                             <div class="col-md-6">
