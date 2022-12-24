@@ -52,8 +52,8 @@
                             <div class="form-group">
 								<h5>Foto <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="file" name="fotoproduk" class="form-control" required data-validation-required-message="This field is required"> 
-									<img scr="{{ asset('uploads/produks/'.$editData->fotoproduk)}}" width="70px" height="70px" alt="Image">
+									<input type="file" name="fotoproduk"  class="form-control" required data-validation-required-message="This field is required"> 
+									<img src="{{ asset('upload/produks/'.$editData->fotoproduk)}}" width="70px" height="70px" alt="Image">
 								</div>
 							</div>
                             </div>

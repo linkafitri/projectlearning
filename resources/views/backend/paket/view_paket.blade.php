@@ -39,7 +39,9 @@
 								<td>{{$paket->namapaket}}</td>
 								<td>{{$paket->deskripsi}}</td>
 								<td>{{$paket->hargapaket}}</td>
-								<td>{{$paket->foto}}</td>
+								<td>
+									<img src="{{ asset('upload/pakets/'.$paket->foto)}}" width="70px" height="70px" alt="Image">
+								</td>
 								<td>
 									<a href="{{route('pakets.edit', $paket->id)}}" class="btn btn-info">Edit</a>
 									<a href="{{route('pakets.delete', $paket->id)}}" id="delete" class="btn btn-danger">Delete</a>
