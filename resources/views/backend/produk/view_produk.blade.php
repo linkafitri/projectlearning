@@ -40,7 +40,7 @@
 								<td>{{$produk->hargaproduk}}</td>
 								<td>{{$produk->desk}}</td>
 								<td>
-									<img scr="{{ asset('uploads/produks/'.$produk->fotoproduk)}}" width="70px" height="70px" alt="Image">
+								<img src="{{ asset('upload/produks/'.$produk->fotoproduk)}}" width="70px" height="70px" alt="Image">
 								</td>
 								<td>
 									<a href="{{route('produks.edit', $produk->id)}}" class="btn btn-info">Edit</a>

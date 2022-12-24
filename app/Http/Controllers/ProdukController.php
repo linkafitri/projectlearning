@@ -62,7 +62,7 @@ class ProdukController extends Controller
     }
     
 
-    // crud web paket
+    // crud web produk
 
     public function ProdukView() {
         $Data['allDataProduk']=Produk::all();
@@ -92,9 +92,9 @@ class ProdukController extends Controller
             $file = $request->file('fotoproduk');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('uploads/produks', $filename);
+            $file->move('upload/produks/', $filename);
             $data->fotoproduk=$request->fotoproduk = $filename;
-        }
+        } 
         // $data->fotoproduk=$request->fotoproduk;
         $data->save();
 
@@ -120,7 +120,7 @@ class ProdukController extends Controller
         $data->desk=$request->desk;
         if($request->hasfile('fotoproduk'))
         {
-            $destination = 'uploads/produks'.$data->fotoproduk=$request->fotoproduk;
+            $destination = 'upload/produks/'.$data->fotoproduk=$request->fotoproduk;
             if(File::exists($destination))
             {
                 File::delete($destination);
@@ -128,12 +128,12 @@ class ProdukController extends Controller
             $file = $request->file('fotoproduk');
             $extention = $file->getClientOriginalExtension();
             $filename = time().'.'.$extention;
-            $file->move('uploads/produks', $filename);
+            $file->move('upload/produks/', $filename);
             $data->fotoproduk=$request->fotoproduk = $filename;
-        }
+        } 
         // $data->fotoproduk=$request->fotoproduk;
         
-        $data->update();
+        $data->save();
 
         return redirect()->route('produk.view')->with('info','Update Produk berhasil');
     }

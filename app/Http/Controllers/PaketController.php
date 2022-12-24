@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Paket;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\File;
 
 class PaketController extends Controller
 {
@@ -79,7 +80,15 @@ class PaketController extends Controller
         $data->namapaket=$request->namapaket;
         $data->deskripsi=$request->deskripsi;
         $data->hargapaket=$request->hargapaket;
-        $data->foto=$request->foto;
+        if($request->hasfile('foto'))
+        {
+            $file = $request->file('foto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/pakets/', $filename);
+            $data->foto=$request->foto = $filename;
+        } 
+        // $data->foto=$request->foto;
         $data->save();
 
         return redirect()->route('paket.view')->with('info','Tambah Paket berhasil');
@@ -102,10 +111,20 @@ class PaketController extends Controller
         $data->namapaket=$request->namapaket;
         $data->deskripsi=$request->deskripsi;
         $data->hargapaket=$request->hargapaket;
-        $data->foto=$request->foto;
-        // if($request->password!=""){
-        //     $data->password=bcrypt($request->password);
-        // }
+        if($request->hasfile('foto'))
+        {
+            $destination = 'upload/pakets/'.$data->foto=$request->foto;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('foto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/pakets/', $filename);
+            $data->foto=$request->foto = $filename;
+        }
+        // $data->foto=$request->foto;
         
         $data->save();
 

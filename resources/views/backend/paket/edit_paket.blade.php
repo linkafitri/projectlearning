@@ -20,7 +20,7 @@
 			<div class="box-body">
 			  <div class="row">
 				<div class="col">
-					<form method="post" action="{{route('pakets.update', $editData->id)}}">
+					<form method="post" action="{{route('pakets.update', $editData->id)}}" enctype="multipart/form-data">
                     @csrf
                         <div class="row">
                             <div class="col-md-6">
@@ -52,7 +52,9 @@
                             <div class="form-group">
 								<h5>Foto <span class="text-danger">*</span></h5>
 								<div class="controls">
-									<input type="file" name="foto" value="{{$editData->foto}}" class="form-control" required data-validation-required-message="This field is required"> </div>
+									<input type="file" name="foto" value="{{$editData->foto}}" class="form-control" required data-validation-required-message="This field is required"> 
+									<img src="{{ asset('upload/pakets/'.$editData->foto)}}" width="70px" height="70px" alt="Image">
+								</div>
 							</div>
                             </div>
                             
