@@ -52,14 +52,12 @@
                                             <input type="password" class="form-control"
                                                 id="password" name="password" placeholder="Password">
                                         </div>
+                                        <hr>
                                         <button type="submit" class="btn btn-primary btn-block">
 											Login
 										</button>
                                     </form>
                                     <hr>
-                                    <div class="text-center">
-                                        <a class="small" href="{{route('register')}}">Create an Account!</a>
-                                    </div>
                                 </div>
                             </div>
                         </div>
