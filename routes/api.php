@@ -20,6 +20,22 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::apiResource('produks', ProdukController::class);
+//api produk
+// Route::apiResource('produks', ProdukController::class);
+Route::get('produks', [ProdukController::class, 'index']);
+Route::get('produks/{id}/show', [ProdukController::class, 'show']);
+Route::post('produks/add', [ProdukController::class, 'store']);
 
-Route::apiResource('pakets', PaketController::class);
+// Route::put('produks/{id}/update', [ProdukController::class, 'update']);
+Route::post('produks/{id}/update', [ProdukController::class, 'update']);
+Route::delete('produks/{id}/delete', [ProdukController::class, 'destroy']);
+
+//api paket
+// Route::apiResource('pakets', PaketController::class);
+Route::get('pakets', [PaketController::class, 'index']);
+Route::get('pakets/{id}/show', [PaketController::class, 'show']);
+Route::post('pakets/add', [PaketController::class, 'store']);
+
+// Route::put('pakets/{id}/update', [ProdukController::class, 'update']);
+Route::post('pakets/{id}/update', [PaketController::class, 'update']);
+Route::delete('pakets/{id}/delete', [PaketController::class, 'destroy']);

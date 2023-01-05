@@ -11,54 +11,99 @@ class ProdukController extends Controller
 {
     public function index()
     {
-        $produks = Produk::paginate(10);
-        return response()->json([
-            'data' => $produks
-        ]);
+        $produk = Produk::all();
+        return response()->json(['produks' => $produk], 200);
     }
 
     public function store(Request $request)
 
     {  
-        $produk = Produk::create([
-            'namaproduk' => $request->namaproduk,
-            'hargaproduk' => $request->hargaproduk,
-            'desk'=> $request->desk,
-            'fotoproduk' => $request->fotoproduk
+        $request->validate([
+            'namaproduk'=>'required|max:255',
+            'hargaproduk'=>'required|integer',
+            'desk'=>'required|max:255',
+            'fotoproduk'=>'required|image|mimes:png,jpg,jpeg|max:2040',
         ]);
-        return response()->json([
-            'data' => $produk
-        ]);
-    }
 
-    public function show(Produk $produk)
-    {
-        return response()->json([
-            'data' => $produk
-        ]);
-    }
-
-   public function update(Request $request, Produk $produk)
-    {
+        $produk = new Produk;
         $produk->namaproduk = $request->namaproduk;
         $produk->hargaproduk = $request->hargaproduk;
         $produk->desk = $request->desk;
-        $produk->fotoproduk = $request->fotoproduk;
+        if($request->hasfile('fotoproduk'))
+        {
+            $file = $request->file('fotoproduk');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/produks/', $filename);
+            $produk->fotoproduk=$request->fotoproduk = $filename;
+        } 
         $produk->save();
 
-        return response()->json([
-            'data' => $produk
-        ]);
-    
+        return response()->json(['message'=>'Product Added Successfuly'], 200);
     }
 
-
-    public function destroy(Produk $produk)
+    public function show($id)
     {
-        $produk->delete();
-        return response()->json([
-            'message' => 'Produk deleted'
-        ], 204);
+        $produk = Produk::find($id);
+        if($produk)
+        {
+            return response()->json(['produks' => $produk], 200);  
+        }
+        else
+        {
+            return response()->json(['message' => 'No Product Found'], 404);
+        }
+    }
+
+   public function update(Request $request, $id)
+    {
+        $request->validate([
+            'namaproduk'=>'required|max:255',
+            'hargaproduk'=>'required|integer',
+            'desk'=>'required|max:255',
+            'fotoproduk'=>'required|image|mimes:png,jpg,jpeg|max:2040',
+        ]);
+
+        $produk = Produk::find($id);
+        if($produk)
+        {
+            $produk->namaproduk = $request->namaproduk;
+            $produk->hargaproduk = $request->hargaproduk;
+            $produk->desk = $request->desk;
+            if($request->hasfile('fotoproduk'))
+        {
+            $destination = 'upload/produks/'.$produk->fotoproduk=$request->fotoproduk;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('fotoproduk');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/produks/', $filename);
+            $produk->fotoproduk=$request->fotoproduk = $filename;
+        } 
+            $produk->update();
+    
+            return response()->json(['message'=>'Product Updated Successfuly'], 200);    
+        }
+        else{
+            return response()->json(['message'=>'No Product Found'], 404);
+        }
+        
+        }
+
+    public function destroy(Produk $produk, $id)
+    {
+        $produk = Produk::find($id);
+        if($produk)
+        {
+            $produk->delete();
+            return response()->json(['message' => 'Product deleted successfuly'], 200); 
+        }
+        else{
+            return response()->json(['message' => 'No Product Found'], 404); 
+        }
     }
     
 
@@ -77,11 +122,12 @@ class ProdukController extends Controller
 
     public function ProdukStore(Request $request){
         
-        // $validateData=$request->validate([
-        //     'email' =>'required|unique:users',
-        //     'textNama' =>'required'
-        // ]);
-        //dd($request);
+        $request->validate([
+            'namaproduk'=>'required|max:255',
+            'hargaproduk'=>'required|integer',
+            'desk'=>'required|max:255',
+            'fotoproduk'=>'required|image|mimes:png,jpg,jpeg|max:2040',
+        ]);
 
         $data=new Produk();
         $data->namaproduk=$request->namaproduk;
@@ -109,11 +155,13 @@ class ProdukController extends Controller
 
     public function ProdukUpdate(Request $request, $id){
         
-        // $validateData=$request->validate([
-        //     'email' =>'required|unique:users',
-        //     'textNama' =>'required'
-        // ]);
-        //dd($request);
+        $request->validate([
+            'namaproduk'=>'required|max:255',
+            'hargaproduk'=>'required|integer',
+            'desk'=>'required|max:255',
+            'fotoproduk'=>'required|image|mimes:png,jpg,jpeg|max:2040',
+        ]);
+
         $data=Produk::find($id);
         $data->namaproduk=$request->namaproduk;
         $data->hargaproduk=$request->hargaproduk;

@@ -10,51 +10,98 @@ class PaketController extends Controller
 {
     public function index()
     {
-        $pakets = Paket::paginate(10);
-        return response()->json([
-            'data' => $pakets
-        ]);
+        $paket = Paket::all();
+        return response()->json(['pakets' => $paket], 200);
     }
 
-    public function store(Request $request) {
-       
-        $paket = Paket::create([
-                    'namapaket' => $request->namapaket,
-                    'deskripsi' => $request->deskripsi,
-                    'hargapaket' => $request->hargapaket,
-                    'foto' => $request->foto
-                ]);
-                return response()->json([
-                    'data' => $paket
-                ]);
-    }
-
-    public function show(Paket $paket)
+    public function store(Request $request) 
     {
-        return response()->json([
-            'data' => $paket
+        $request->validate([
+            'namapaket'=>'required|max:255',
+            'deskripsi'=>'required|max:255',
+            'hargapaket'=>'required|integer',
+            'foto'=>'required|image|mimes:png,jpg,jpeg|max:2040',
         ]);
+
+        $paket = new Paket;
+        $paket->namapaket = $request->namapaket;
+        $paket->deskripsi = $request->deskripsi;
+        $paket->hargapaket = $request->hargapaket;
+        if($request->hasfile('foto'))
+        {
+            $file = $request->file('foto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/pakets/', $filename);
+            $paket->foto=$request->foto = $filename;
+        } 
+        $paket->save();
+
+        return response()->json(['message'=>'Pakage Added Successfuly'], 200);
     }
 
-    public function update(Request $request, Paket $paket) {
-       
+    public function show($id)
+    {
+        $paket = Paket::find($id);
+        if($paket)
+        {
+            return response()->json(['pakets' => $paket], 200);  
+        }
+        else
+        {
+            return response()->json(['message' => 'No Pakage Found'], 404);
+        }
+    }
+
+    public function update(Request $request, $id) 
+    {
+        $request->validate([
+            'namapaket'=>'required|max:255',
+            'deskripsi'=>'required|max:255',
+            'hargapaket'=>'required|integer',
+            'foto'=>'required|image|mimes:png,jpg,jpeg|max:2040',
+        ]);
+
+        $paket = Paket::find($id);
+        if($paket)
+        {
         $paket->namapaket=$request->namapaket;
         $paket->deskripsi=$request->deskripsi;
         $paket->hargapaket=$request->hargapaket;
-        $paket->foto=$request->foto;
-        $paket->save();
+        if($request->hasfile('foto'))
+        {
+            $destination = 'upload/pakets/'.$paket->foto=$request->foto;
+            if(File::exists($destination))
+            {
+                File::delete($destination);
+            }
+            $file = $request->file('foto');
+            $extention = $file->getClientOriginalExtension();
+            $filename = time().'.'.$extention;
+            $file->move('upload/pakets/', $filename);
+            $paket->foto=$request->foto = $filename;
+        }
+        $paket->update();
 
-        return response()->json([
-            'data' => $paket
-        ]);
+        return response()->json(['message'=>'Pakage Updated Successfuly'], 200);
+        }
+        else{
+            return response()->json(['message'=>'No Pakage Found'], 404);
+        }
+    
     }
 
-    public function destroy(Paket $paket)
+    public function destroy(Paket $paket, $id)
     {
-        $paket->delete();
-        return response()->json([
-            'message' => 'Paket deleted'
-        ], 204);
+        $paket = Paket::find($id);
+        if($paket)
+        {
+            $paket->delete();
+            return response()->json(['message' => 'Pakage deleted successfuly'], 200); 
+        }
+        else{
+            return response()->json(['message' => 'No Pakage Found'], 404); 
+        }
     }
 
 
