@@ -118,11 +118,12 @@ class PaketController extends Controller
 
     public function PaketStore(Request $request){
         
-        // $validateData=$request->validate([
-        //     'email' =>'required|unique:users',
-        //     'textNama' =>'required'
-        // ]);
-        //dd($request);
+        $request->validate([
+            'namapaket'=>'required|max:255',
+            'deskripsi'=>'required|max:255',
+            'hargapaket'=>'required|integer',
+            'foto'=>'required|image|mimes:png,jpg,jpeg|max:2040',
+        ]);
         $data=new Paket();
         $data->namapaket=$request->namapaket;
         $data->deskripsi=$request->deskripsi;
@@ -149,11 +150,12 @@ class PaketController extends Controller
 
     public function PaketUpdate(Request $request, $id){
         
-        // $validateData=$request->validate([
-        //     'email' =>'required|unique:users',
-        //     'textNama' =>'required'
-        // ]);
-        //dd($request);
+        $request->validate([
+            'namapaket'=>'required|max:255',
+            'deskripsi'=>'required|max:255',
+            'hargapaket'=>'required|integer',
+            'foto'=>'required|image|mimes:png,jpg,jpeg|max:2040',
+        ]);
         $data=Paket::find($id);
         $data->namapaket=$request->namapaket;
         $data->deskripsi=$request->deskripsi;
