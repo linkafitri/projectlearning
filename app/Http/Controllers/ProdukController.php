@@ -11,7 +11,6 @@ class ProdukController extends Controller
 {
     
     // crud web produk
-
     public function ProdukView() {
         $Data['allDataProduk']=Produk::all();
         return view('backend.produk.view_produk', $Data);

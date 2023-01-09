@@ -22,16 +22,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 //api produk
 Route::get('produks', [ProdukApiController::class, 'index']);
-Route::get('produks/{id}/show', [ProdukApiController::class, 'show']);
-Route::post('produks/add', [ProdukApiController::class, 'store']);
-// Route::put('produks/{id}/update', [ProdukApiController::class, 'update']);
-Route::post('produks/{id}/update', [ProdukApiController::class, 'update']);
-Route::delete('produks/{id}/delete', [ProdukApiController::class, 'destroy']);
+Route::post('produks', [ProdukApiController::class, 'store']);
+Route::get('produks/{id}', [ProdukApiController::class, 'show']);
+Route::put('produks/{id}', [ProdukApiController::class, 'update']);
+Route::delete('produks/{id}', [ProdukApiController::class, 'destroy']);
 
 //api paket
 Route::get('pakets', [PaketApiController::class, 'index']);
-Route::get('pakets/{id}/show', [PaketApiController::class, 'show']);
-Route::post('pakets/add', [PaketApiController::class, 'store']);
-// Route::put('pakets/{id}/update', [ProdukApiController::class, 'update']);
-Route::post('pakets/{id}/update', [PaketApiController::class, 'update']);
-Route::delete('pakets/{id}/delete', [PaketApiController::class, 'destroy']);
+Route::post('pakets', [PaketApiController::class, 'store']);
+Route::get('pakets/{id}', [PaketApiController::class, 'show']);
+Route::put('pakets/{id}', [PaketApiController::class, 'update']);
+Route::delete('pakets/{id}', [PaketApiController::class, 'destroy']);
