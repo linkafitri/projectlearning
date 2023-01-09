@@ -8,9 +8,8 @@ use Illuminate\Support\Facades\File;
 
 class PaketController extends Controller
 {
-    
-    // crud web paket
 
+    // crud web paket
      public function PaketView() {
         $Data['allDataPaket']=Paket::all();
         return view('backend.paket.view_paket', $Data);
