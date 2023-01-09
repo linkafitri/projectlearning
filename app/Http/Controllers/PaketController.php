@@ -54,13 +54,14 @@ class PaketController extends Controller
 
     public function PaketUpdate(Request $request, $id){
         
+
        $request->validate([
             'namapaket'=>'required|max:255',
             'deskripsi'=>'required|max:255',
             'hargapaket'=>'required|integer',
             'foto'=>'required|image|mimes:png,jpg,jpeg|max:2040',
         ]);
-        
+
         $data=Paket::find($id);
         $data->namapaket=$request->namapaket;
         $data->deskripsi=$request->deskripsi;
